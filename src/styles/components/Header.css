@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+
+.header ul {
+    display: flex;
+    gap: 30px;
+    padding: 0 5px 0 5px;
+    list-style: none;
+}
+
+.header ul li a {
+    color: var(--dark-color);
+    text-decoration: none;
+    user-select: none;
+}
+
+.header > nav > ul > li > a.active {
+    color: var(--primary-color);
+    cursor: default;
+}

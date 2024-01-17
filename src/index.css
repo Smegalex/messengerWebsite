@@ -1,0 +1,10 @@
+:root {
+    --dark-color: #000000;
+    --primary-color: #0a4de7;
+    --success-color: #138519;
+    --light-color: #cafcf2;
+}
+
+html {
+    font-family: sans-serif;
+}

@@ -1,0 +1,10 @@
+.search{
+    height: 30%;
+    border-radius: 10px;
+    border: 1px, 1px;
+    padding-left: 5px;
+    width: 10vw;
+}
+.search::placeholder{
+    font-style: italic;
+}
