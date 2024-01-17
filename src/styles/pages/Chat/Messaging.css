@@ -1,0 +1,36 @@
+.messaging-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.messaging__header {
+    height: 60px;
+    border-bottom: var(--default-border);
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
+}
+
+.messaging__name {
+    flex: 1 0 0;
+}
+
+.messaging__list {
+    display: flex;
+    flex: 1;
+}
+
+.messaging__footer {
+    display: flex;
+    border-top: var(--default-border);
+    height: 50px;
+    padding: 0 10px 0 10px;
+}
+
+.messaging__input {
+    flex: 1;
+    outline: 0;
+    border: 0;
+    font-size: 18px;
+}

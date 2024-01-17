@@ -4,8 +4,8 @@ export const NavigationElements = [
 		link: '/',
 	},
 	{
-		title: 'Messages',
-		link: '/messages',
+		title: 'Chat',
+		link: '/chat',
 	},
 	{
 		title: 'Profile',

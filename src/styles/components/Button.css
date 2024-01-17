@@ -1,13 +1,10 @@
-.button{
+.button {
+    border: var(--default-border-width) var(--default-border-style) var(--dark-color);
     background-color: var(--light-color);
     transition: 0.2s ease-in-out;
-/*    -webkit-transition: 0.2s ease-in-out;
-    -moz-transition: 0.2s ease-in-out;
-    -ms-transition: 0.2s ease-in-out;
-    -o-transition: 0.2s ease-in-out;*/
 }
 
-.button:hover{
+.button:hover {
     background-color: var(--primary-color) !important;
     color: white;
     border-radius: 5px;
