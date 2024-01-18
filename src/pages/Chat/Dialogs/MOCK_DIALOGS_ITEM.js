@@ -5,7 +5,7 @@ export const MOCK_DIALOGS_ITEM = [
 		dialog_id: 1,
 		userAvatar: USER_AVATAR,
 		caption: 'Oleksii',
-		message: 'Hello',
+		message: 'Hello how are you amigo? I was so frustrated you didn`t come yesterday.',
 		date: '2024-10-01',
 		time: '10:00',
 	},
