@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import {Home} from "./pages/Home";
 import {Profile} from "./pages/Profile";
+import {Chat} from "./pages/Chat/Chat";
 
 export const ROUTES = createBrowserRouter([
 	{
@@ -11,5 +12,9 @@ export const ROUTES = createBrowserRouter([
 	{
 		path: '/profile',
 		element: <Profile />
+	},
+	{
+		path: '/chat',
+		element: <Chat />
 	}
 ]);

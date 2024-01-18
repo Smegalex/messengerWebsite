@@ -12,7 +12,7 @@ export const Header = ({ currentPage }) => {
 				<ul>
 					{NavigationElements.map((element) => (
 						<li key={element.title}>
-							<Link to={element.link} className={currentPage === element.title && 'active'}>
+							<Link to={element.link} className={currentPage === element.title ? 'active' : ''}>
 								{element.title}
 							</Link>
 						</li>

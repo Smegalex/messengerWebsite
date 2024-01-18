@@ -3,6 +3,11 @@
     --primary-color: #0a4de7;
     --success-color: #138519;
     --light-color: #cafcf2;
+
+    --default-border: var(--default-border-width) var(--default-border-style) var(--dark-color);
+    --default-border-width: 1px;
+    --default-border-style: solid;
+    --default-border-radius: 10px;
 }
 
 html {
