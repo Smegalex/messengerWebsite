@@ -1,60 +1,102 @@
 .dialogs-container {
-    display: flex;
-    flex-direction: column;
-    border-right: var(--default-border);
-    overflow: auto;
-    width: 20%;
-    user-select: none;
+  display: flex;
+  flex-direction: column;
+  border-right: var(--default-border);
+  overflow: auto;
+  width: 20%;
+  user-select: none;
+  min-width: 180px;
+}
+
+.dialogs-container::-webkit-scrollbar {
+  width: 10px;
+}
+.dialogs-container::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.1);
+}
+.dialogs-container::-webkit-scrollbar-track:hover {
+  background: rgba(200, 200, 200, 0.4);
+}
+.dialogs-container::-webkit-scrollbar-thumb {
+  border-radius: var(--default-border-radius);
+  background-color: rgba(200, 200, 200, 0.4);
+}
+.dialogs-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.7);
 }
 
 .dialogs__item {
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    gap: 10px;
-    cursor: pointer;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .dialogs__item:hover {
-    background: rgba(234, 233, 233, 0.5);
+  background: rgba(234, 233, 233, 0.5);
 }
 
 .dialog__image-container {
-    overflow: hidden;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .dialogs__image {
-    border-radius: 50%;
-    width: 40px;
+  border-radius: 50%;
+  width: 40px;
 }
 
 .dialogs__item-text {
-    display: flex;
-    flex: 1 0 0;
-    flex-direction: column;
-    gap: 5px;
+  padding-left: 10px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 5px;
+  width: auto;
 }
 
 .dialog__caption-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* @media screen and (max-width: 1005px) {
+    .dialog__caption-container {
+    max-width: 100px;
+    }
+} */
+
+
+
 .dialog__caption {
-    font-size: 17px;
-    font-weight: 700;
+  font-size: 17px;
+  font-weight: 700;
+  max-width: calc(100% - 35px);
+  overflow: hidden;
 }
 
 .dialog__time {
-    font-size: 12px;
+  font-size: 12px;
+  flex: 1 0 0;
+  text-align: right;
 }
 
 .dialog__message {
-    font-size: 15px;
+  font-size: 15px;
+
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .dialog__item--active {
-    background: rgba(234, 233, 233, 0.8);
+  background: rgba(234, 233, 233, 0.8);
 }
