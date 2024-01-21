@@ -5,24 +5,7 @@
   overflow: auto;
   width: 20%;
   user-select: none;
-  min-width: 180px;
-}
-
-.dialogs-container::-webkit-scrollbar {
-  width: 10px;
-}
-.dialogs-container::-webkit-scrollbar-track {
-  background: rgba(200, 200, 200, 0.1);
-}
-.dialogs-container::-webkit-scrollbar-track:hover {
-  background: rgba(200, 200, 200, 0.4);
-}
-.dialogs-container::-webkit-scrollbar-thumb {
-  border-radius: var(--default-border-radius);
-  background-color: rgba(200, 200, 200, 0.4);
-}
-.dialogs-container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(200, 200, 200, 0.7);
+  min-width: 200px;
 }
 
 .dialogs__item {

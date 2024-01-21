@@ -1,0 +1,30 @@
+.message-wrapper{
+    width: calc(100% - 20px);
+    display: flex;
+    height: fit-content;
+    padding: 5px 10px;
+}
+.message-wrapper:has(.message-send){
+    justify-content: end;
+    text-align: right;
+}
+.message-wrapper:has(.message-receive){
+    justify-content: start;
+    text-align: left;
+}
+
+.message{
+    max-width: 70%;
+    padding: 5px 10px;
+    border-radius: var(--default-border-radius);
+}
+
+.message-send{
+    background: var(--primary-color);
+    color: white;
+}
+
+.message-receive{
+    background: var(--neutral-color);
+    color: var(--dark-color);
+}

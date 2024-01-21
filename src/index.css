@@ -1,15 +1,45 @@
 :root {
-    --dark-color: #000000;
-    --primary-color: #0a4de7;
-    --success-color: #138519;
-    --light-color: #cafcf2;
+  --dark-color: #000000;
+  --primary-color: #496cbc;
+  --success-color: #30cc37;
+  --light-color: #e7fffa;
+  --neutral-color: #fff9dd;
 
-    --default-border: var(--default-border-width) var(--default-border-style) var(--dark-color);
-    --default-border-width: 1px;
-    --default-border-style: solid;
-    --default-border-radius: 10px;
+  --default-border: var(--default-border-width) var(--default-border-style)
+    var(--dark-color);
+  --default-border-width: 1px;
+  --default-border-style: solid;
+  --default-border-radius: 20px;
 }
 
 html {
-    font-family: sans-serif;
+  font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.1);
+}
+::-webkit-scrollbar-track:hover {
+  background: rgba(200, 200, 200, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: var(--default-border-radius);
+  background-color: rgba(200, 200, 200, 0.4);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.7);
 }
