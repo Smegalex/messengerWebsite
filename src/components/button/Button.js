@@ -1,7 +1,7 @@
 import '../../styles/components/Button.css';
 
-export const Button = ({ buttonColor, children }) => {
+export const Button = ({ buttonType, fontSize, onClick, children }) => {
     return (
-        <button className="button" style={{backgroundColor: buttonColor}}>{children}</button>
+        <button className={"button button-"+buttonType} style={{fontSize: fontSize + 'px'}} onClick={onClick}>{children}</button>
     )
 }

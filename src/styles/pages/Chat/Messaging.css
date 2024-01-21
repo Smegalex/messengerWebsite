@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    background: var(--light-color);
 }
 
 .messaging__header {
@@ -18,17 +19,21 @@
 
 .messaging__list {
     display: flex;
+    flex-direction: column;
     flex: 1;
+    background: white;
 }
 
 .messaging__footer {
     display: flex;
     border-top: var(--default-border);
     height: 50px;
-    padding: 0 10px 0 10px;
 }
 
 .messaging__input {
+    background-color: var(--neutral-color);
+    
+    padding: 0 10px 0 10px;
     flex: 1;
     outline: 0;
     border: 0;
