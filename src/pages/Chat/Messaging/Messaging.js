@@ -22,21 +22,44 @@ export const Messaging = () => {
   const CURRENT_DIALOG = MOCK_DIALOGS_ITEM.find(
     (dialog) => dialog.dialog_id === Number(DIALOG_ID)
   );
-  let CURRENT_MESSAGES = MOCK_MESSAGING_DATA.find(
+  console.log(CURRENT_DIALOG);
+  let CURRENT_MESSAGES;
+  let CURRENT_MESSAGES_LIST;
+  CURRENT_MESSAGES = MOCK_MESSAGING_DATA.find(
     (messages) => messages.dialog_id === Number(DIALOG_ID)
   );
-  CURRENT_MESSAGES = CURRENT_MESSAGES ? CURRENT_MESSAGES.messages : null;
+
+  const currentMessageListUpdate = () => {
+    CURRENT_MESSAGES_LIST = CURRENT_MESSAGES ? CURRENT_MESSAGES.messages : [];
+  };
+  currentMessageListUpdate();
 
   const sendMessageHandler = (event) => {
     const element = document.getElementById("messaging__input");
+    if (CURRENT_MESSAGES){
+      if (CURRENT_MESSAGES.dialog_id !== Number(DIALOG_ID)) {
+        if (
+          !(CURRENT_MESSAGES = MOCK_MESSAGING_DATA.find(
+            (messages) => messages.dialog_id === Number(DIALOG_ID)
+          ))
+        ) {
+          CURRENT_MESSAGES = {
+            dialog_id: Number(DIALOG_ID),
+            messages: [],
+          };
+        } 
+        currentMessageListUpdate();
+      }
+
+    }
     $(".messaging__input").on("keyup", function (e) {
       if ((e.key === "Enter" || e.keyCode === 13) && element.value) {
-        CURRENT_MESSAGES.push({
+        CURRENT_MESSAGES_LIST.push({
           sender_status: "send",
           content: element.value,
         });
         element.value = "";
-        console.log(CURRENT_MESSAGES);
+        console.log(CURRENT_MESSAGES_LIST);
         forceUpdate();
       }
     });
@@ -51,8 +74,8 @@ export const Messaging = () => {
         <span className="messaging__status">{CURRENT_DIALOG.time}</span>
       </div>
       <div className="messaging__list">
-        {CURRENT_MESSAGES &&
-          CURRENT_MESSAGES.map((MESSAGE) => (
+        {CURRENT_MESSAGES_LIST &&
+          CURRENT_MESSAGES_LIST.map((MESSAGE) => (
             <Message type={MESSAGE.sender_status}>{MESSAGE.content}</Message>
           ))}
       </div>
