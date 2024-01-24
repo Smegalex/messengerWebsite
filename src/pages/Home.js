@@ -8,7 +8,7 @@ export const Home = () => {
 	return (
 		<MainLayout currentPage={NAME_OF_PAGE}>
 			<h1>Home page</h1>
-			<Button buttonType="negative" fontSize="32">Hello world!</Button>
+			<Button buttonType="NEGATIVE" size="MEDIUM">Hello world!</Button>
 		</MainLayout>
 	)
 }
