@@ -1,33 +1,47 @@
 .button {
-  border: var(--default-border-width) var(--default-border-style)
+    border: var(--default-border-width) var(--default-border-style)
     var(--dark-color);
-  background-color: var(--light-color);
-  transition: 0.2s ease-in-out;
-  border-radius: var(--default-border-radius);
-  width: calc(100% - 5px);
-  height: calc(100% - 5px);
-  padding: 5px;
+    background-color: var(--light-color);
+    transition: 0.2s ease-in-out;
+    border-radius: var(--default-border-radius);
+    width: calc(100% - 5px);
+    cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--primary-color) !important;
-  color: var(--neutral-color);
-  border-color: var(--neutral-color);
+    background-color: var(--primary-color) !important;
+    color: var(--neutral-color);
+    border-color: var(--neutral-color);
 }
 
 .button-negative {
-  background-color: var(--neutral-color);
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+    background-color: var(--neutral-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .button-positive {
-  background-color: var(--primary-color);
-  color: var(--neutral-color);
-  border-color: var(--neutral-color);
+    background-color: var(--primary-color);
+    color: var(--neutral-color);
+    border-color: var(--neutral-color);
 }
 
 .button-positive:hover{
     background-color: var(--success-color) !important;
     color: var(--dark-color);
+}
+
+.btn-s {
+    height: 14px;
+    font-size: 10px;
+}
+
+.btn-m {
+    height: 18px;
+    font-size: 14px;
+}
+
+.btn-l {
+    height: 24px;
+    font-size: 16px;
 }
