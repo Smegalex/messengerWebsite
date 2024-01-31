@@ -1,0 +1,14 @@
+.overlaySettings-wrapper {
+	position: absolute;
+	background-color: var(--primary-color);
+	height: auto;
+	width: auto;
+	right: 0px;
+	color: var(--light-color);
+	padding: 5px 10px 7px 7px;
+	text-align: right;
+}
+
+h4 {
+	margin: 0;
+}
