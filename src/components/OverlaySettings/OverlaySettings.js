@@ -8,19 +8,28 @@ function capitalizeFirstLetter(string) {
 }
 
 const handleChange = (prevSettings, event) => {
-	const changedValue = event.target._wrapperState.initialValue;
+	let changedValue = event.target._wrapperState.initialValue;
 	if (Object.values(THEMES).includes(changedValue)) {
 		console.log("theme changed");
 		prevSettings["theme"] = changedValue;
+		localStorage.setItem("theme", changedValue);
 		console.log(prevSettings);
 		return prevSettings;
-	} else if (changedValue in BUTTON_TYPE) {
+	} else if (
+		Object.values(BUTTON_TYPE).includes(changedValue.toUpperCase())
+	) {
+		changedValue = changedValue.toUpperCase();
+		console.log("button-type changed");
+		prevSettings["buttonType"] = changedValue;
+		localStorage.setItem("buttons", changedValue);
+		console.log(prevSettings);
+		return prevSettings;
 	}
 	return prevSettings;
 };
 
 export const OverlaySettings = (overlayActive) => {
-	const { settings, setSettings } = useContext(SettingContext);
+	const settings = useContext(SettingContext);
 	// const updateSettings = (newSettings) => {setSettings(newSettings)};
 
 	//settings = settings.initSettingValue;
@@ -34,7 +43,7 @@ export const OverlaySettings = (overlayActive) => {
 			<h4 key="themes_capt">Theme</h4>
 			<form
 				key="themes"
-				onChange={(event) => setSettings(handleChange(settings, event))}
+				onChange={(event) => handleChange(settings, event)}
 			>
 				{Object.values(THEMES).map((theme) => (
 					<React.Fragment key={theme}>
@@ -49,7 +58,10 @@ export const OverlaySettings = (overlayActive) => {
 				))}
 			</form>
 			<h4 key="buttons_capt">Buttons</h4>
-			<form key="buttons">
+			<form
+				key="buttons"
+				onChange={(event) => handleChange(settings, event)}
+			>
 				{Object.values(BUTTON_TYPE).map((button_type) => (
 					<React.Fragment key={button_type}>
 						<input
@@ -57,11 +69,12 @@ export const OverlaySettings = (overlayActive) => {
 							name="button_type"
 							value={button_type}
 							defaultChecked={
-								button_type === settings["buttonType"]
+								button_type ===
+								settings["buttonType"].toUpperCase()
 							}
 						/>
 						<label>
-							{capitalizeFirstLetter(button_type)}
+							{capitalizeFirstLetter(button_type.toLowerCase())}
 						</label>
 					</React.Fragment>
 				))}

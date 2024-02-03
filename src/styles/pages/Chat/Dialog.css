@@ -5,6 +5,7 @@
     overflow: auto;
     width: 20%;
     user-select: none;
+    min-width: 200px;
 }
 
 .dialogs__item {

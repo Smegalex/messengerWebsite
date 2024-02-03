@@ -1,0 +1,55 @@
+.profile__container {
+	height: calc(100% - 50px - var(--default-border-width));
+	width: 100%;
+	display: flex;
+	align-items: center;
+  }
+  
+  .GeneralInfo__container {
+	  background-color: var(--neutral-color);
+	width: 40%;
+	min-width: 300px;
+	max-width: 400px;
+	height: calc(100% - 20px);
+	display: flex;
+	flex-direction: column;
+	padding-top: 20px;
+	align-items: center;
+	border-right: var(--default-border);
+  }
+  .GeneralInfo__avatar_container{
+	  width: 250px;
+	  height: 250px;
+  }
+  
+  .GeneralInfo__avatar{
+	  width: 100%;
+	  height: 100%;
+	  border-radius: 50%;
+	  object-fit: cover;
+  }
+  
+  .GeneralInfo__text_container{
+	  padding: 0 20px 0 20px;
+	  height: calc(100% - 330px);
+	  overflow: hidden;
+  }
+  
+  .profileCaption{
+	  text-align: center;
+	  font-size: 25px;
+	  margin: 15px 0 15px 0;
+  }
+  
+  .aboutMe{
+	  overflow: auto;
+	  margin: 10px 0 10px 0;
+	  max-height: calc(100% - 90px);
+  }
+  
+  .saveButton{
+	  height: 50px;
+	  margin-top: 10px;
+	  margin-bottom: 20px;
+	  width: 100px;
+  }

@@ -1,11 +1,52 @@
 .button {
-    border: var(--default-border-width) var(--default-border-style) var(--dark-color);
-    background-color: var(--light-color);
-    transition: 0.2s ease-in-out;
+	border: var(--default-border-width) var(--default-border-style)
+		var(--dark-color);
+	background-color: var(--light-color);
+	transition: 0.2s ease-in-out;
+	border-radius: var(--default-border-radius);
+	width: calc(100% - 5px);
+	height: calc(100% - 5px);
+	padding: 5px;
+	color: var(--dark-color);
 }
 
 .button:hover {
-    background-color: var(--primary-color) !important;
-    color: white;
-    border-radius: 5px;
+	background-color: var(--primary-color) !important;
+	color: var(--neutral-color);
+	border-color: var(--neutral-color);
+}
+
+.button-negative {
+	background-color: var(--neutral-color);
+	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+.button-positive {
+	background-color: var(--primary-color);
+	color: var(--neutral-color);
+	border-color: var(--neutral-color);
+}
+
+.button-positive:hover {
+	background-color: var(--success-color) !important;
+	color: var(--dark-color);
+}
+
+.btn-s {
+	font-size: 8px;
+	height: 22px;
+	min-width: 50px;
+}
+
+.btn-m {
+	font-size: 14px;
+	height: 25px;
+	min-width: 60px;
+}
+
+.btn-l {
+	height: 32px;
+	min-width: 70px;
+	font-size: 20px;
 }

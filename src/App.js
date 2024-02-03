@@ -1,6 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { ROUTES } from "./routes";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SettingContext from "./context/SettingContext";
 
 export const RootView = (defaultSettingValue) => {
@@ -53,33 +53,12 @@ export const RootView = (defaultSettingValue) => {
 		initSettingValue.language = defaultSettingValue.language;
 	}
 
-	const [settings, setSettings] = useState(initSettingValue);
-	console.log(settings);
-
-	useEffect(() => {
-		if (!settings) return;
-
-		console.log("changes in settings detected");
-		const theme = localStorage.getItem("theme");
-		const buttons = localStorage.getItem("buttons");
-		const language = localStorage.getItem("lang");
-		//update
-		if (theme !== undefined && theme !== settings.theme) {
-			console.log("theme set to", settings.theme);
-			localStorage.setItem("theme", settings.theme);
-		}
-
-		if (buttons !== undefined && buttons !== settings.buttonType) {
-			localStorage.setItem("buttons", settings.buttonType);
-		}
-
-		if (language !== undefined && language !== settings.language) {
-			localStorage.setItem("lang", settings.language);
-		}
-	}, [settings]);
+	const [HTMLElement] = document.getElementsByTagName("html");
+	HTMLElement.dataset.theme = initSettingValue.theme;
+	
 	return (
 		<React.Fragment>
-			<SettingContext.Provider value={{ settings, setSettings }}>
+			<SettingContext.Provider value={initSettingValue}>
 				<RouterProvider router={ROUTES} />
 			</SettingContext.Provider>
 		</React.Fragment>

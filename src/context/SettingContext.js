@@ -7,8 +7,8 @@ export const THEMES = {
 };
 
 export const BUTTON_TYPE = {
-	NEGATIVE: "Negative",
-	POSITIVE: "Positive",
+	NEGATIVE: "NEGATIVE",
+	POSITIVE: "POSITIVE",
 };
 
 export const LANGS = {
@@ -17,12 +17,12 @@ export const LANGS = {
 };
 
 const SettingContext = {
-	settings: {
+	// settings: {
 		theme: null /*THEMES.DEFAULT*/,
 		buttonType: null /*BUTTON_TYPE.POSITIVE*/,
 		language: null,
-	},
-	setSettings: (newSettings) => {},
+	// },
+	// setSettings: (newSettings) => {},
 };
 
 export default createContext(SettingContext);
