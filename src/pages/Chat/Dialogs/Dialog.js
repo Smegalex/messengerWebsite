@@ -4,12 +4,12 @@ import {useSearchParams} from "react-router-dom";
 export const Dialog = ({ dialog_id, userAvatar, caption, message, time }) => {
 
 	const navigation = useNavigate();
-	const [searchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 	const DIALOG_ID = searchParams.get('dialog_id');
 
 	const chooseDialogHandler = (event) => {
 		event.preventDefault();
-		navigation(`?dialog_id=${dialog_id}`);
+		setSearchParams({dialog_id: dialog_id});
 	}
 
 	return (

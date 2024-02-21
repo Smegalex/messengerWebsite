@@ -1,4 +1,4 @@
-import "../../styles/pages/Profile.css";
+import "../../styles/pages/Profile/Profile.css";
 
 import React from "react";
 import { Button } from "../../components/button/Button";

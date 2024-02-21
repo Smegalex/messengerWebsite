@@ -1,20 +1,30 @@
-import "../../../styles/pages/Chat/Messaging.css"
+import "../../../styles/pages/Chat/Messaging.css";
 
 import { useSearchParams } from "react-router-dom";
 import { MOCK_DIALOGS_ITEM } from "../Dialogs/MOCK_DIALOGS_ITEM";
 import { MOCK_MESSAGING_DATA } from "./MOCK_MESSAGING_DATA";
 import { Message } from "../../../components/message/Message";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const Messaging = () => {
 	const [searchParams] = useSearchParams();
 	const DIALOG_ID = searchParams.get("dialog_id");
+	console.log(DIALOG_ID);
 
-	const [currentMessages, setCurrentMessages] = useState(
-		MOCK_MESSAGING_DATA.find(
+	const [currentMessages, setCurrentMessages] = useState();
+
+	useEffect(() => {
+		const bufferMess = MOCK_MESSAGING_DATA.find(
 			(MESSAGING) => MESSAGING.dialog_id === Number(DIALOG_ID)
-		)?.messages
-	);
+		)?.messages;
+		setCurrentMessages(bufferMess?bufferMess:[]);
+	}, [searchParams]);
+
+	// const [currentMessages, setCurrentMessages] = useState(
+	// 	MOCK_MESSAGING_DATA.find(
+	// 		(MESSAGING) => MESSAGING.dialog_id === Number(DIALOG_ID)
+	// 	)?.messages
+	// );
 
 	const CURRENT_DIALOG = MOCK_DIALOGS_ITEM.find(
 		(dialog) => dialog.dialog_id === Number(DIALOG_ID)
@@ -49,11 +59,13 @@ export const Messaging = () => {
 				<span className="messaging__status">{CURRENT_DIALOG.time}</span>
 			</div>
 			<div className="messaging__list">
-				{currentMessages.map((MESSAGE, index) => (
-					<Message key={index} type={MESSAGE.sender_status}>
-						{MESSAGE.content}
-					</Message>
-				))}
+				{currentMessages
+					? currentMessages.map((MESSAGE, index) => (
+							<Message key={index} type={MESSAGE.sender_status}>
+								{MESSAGE.content}
+							</Message>
+					  ))
+					: ""}
 			</div>
 			<div className="messaging__footer">
 				<input

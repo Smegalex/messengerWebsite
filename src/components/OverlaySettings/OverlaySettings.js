@@ -2,19 +2,20 @@ import "../../styles/components/overlaySettings.css";
 import { THEMES, BUTTON_TYPE } from "../../context/SettingContext";
 import SettingContext from "../../context/SettingContext";
 import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const handleChange = (prevSettings, event) => {
+const handleChange = (prevSettings, event, renew) => {
 	let changedValue = event.target._wrapperState.initialValue;
 	if (Object.values(THEMES).includes(changedValue)) {
 		console.log("theme changed");
 		prevSettings["theme"] = changedValue;
 		localStorage.setItem("theme", changedValue);
 		console.log(prevSettings);
-		return prevSettings;
+		renew();
 	} else if (
 		Object.values(BUTTON_TYPE).includes(changedValue.toUpperCase())
 	) {
@@ -23,13 +24,15 @@ const handleChange = (prevSettings, event) => {
 		prevSettings["buttonType"] = changedValue;
 		localStorage.setItem("buttons", changedValue);
 		console.log(prevSettings);
-		return prevSettings;
+		renew();
 	}
 	return prevSettings;
 };
 
 export const OverlaySettings = (overlayActive) => {
 	const settings = useContext(SettingContext);
+	const navigate = useNavigate();
+
 	// const updateSettings = (newSettings) => {setSettings(newSettings)};
 
 	//settings = settings.initSettingValue;
@@ -43,7 +46,9 @@ export const OverlaySettings = (overlayActive) => {
 			<h4 key="themes_capt">Theme</h4>
 			<form
 				key="themes"
-				onChange={(event) => handleChange(settings, event)}
+				onChange={(event) =>
+					handleChange(settings, event, () => navigate(0))
+				}
 			>
 				{Object.values(THEMES).map((theme) => (
 					<React.Fragment key={theme}>
@@ -60,7 +65,9 @@ export const OverlaySettings = (overlayActive) => {
 			<h4 key="buttons_capt">Buttons</h4>
 			<form
 				key="buttons"
-				onChange={(event) => handleChange(settings, event)}
+				onChange={(event) =>
+					handleChange(settings, event, () => navigate(0))
+				}
 			>
 				{Object.values(BUTTON_TYPE).map((button_type) => (
 					<React.Fragment key={button_type}>
