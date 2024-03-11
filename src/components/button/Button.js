@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "../../styles/components/Button.css";
-import SettingContext from "../../context/SettingContext";
+import { useSelector } from "react-redux";
 
 const BUTTON_TYPE = {
 	NEGATIVE: "button-negative",
@@ -14,7 +14,7 @@ const BUTTON_SIZE = {
 };
 
 export const Button = ({ buttonType, size, onClick, children }) => {
-	const defaultButton = useContext(SettingContext).buttonType;
+	const defaultButton = useSelector((store) => store.buttonType);
 	if (!buttonType) {
 		buttonType = defaultButton;
 	}

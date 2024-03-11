@@ -1,7 +1,8 @@
 import "../../styles/components/overlaySettings.css";
 import { THEMES, BUTTON_TYPE } from "../../context/SettingContext";
 import SettingContext from "../../context/SettingContext";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 function capitalizeFirstLetter(string) {
@@ -30,8 +31,9 @@ const handleChange = (prevSettings, event, renew) => {
 };
 
 export const OverlaySettings = (overlayActive) => {
-	const settings = useContext(SettingContext);
+	const settings = useSelector((store) => store);
 	const navigate = useNavigate();
+	console.log(settings)
 
 	// const updateSettings = (newSettings) => {setSettings(newSettings)};
 

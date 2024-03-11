@@ -1,39 +1,45 @@
 import "./index.css";
 
+import { RouterProvider } from "react-router-dom";
+import { ROUTES } from "./routes";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-	THEMES,
-	BUTTON_TYPE,
-	LANGS,
-} from "./context/SettingContext";
-import { RootView } from "./App";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import appReducer, { THEMES, BUTTON_TYPE, LANGS } from "./reducers";
 
-let defaultSettingValue = {
-	theme: THEMES["DEFAULT"],
-	buttonType: BUTTON_TYPE.POSITIVE,
-	language: LANGS.UA,
-};
+let preloadedState = {};
+const theme = localStorage.getItem("theme");
+const buttons = localStorage.getItem("buttons");
+const language = localStorage.getItem("lang");
 
-// const theme = localStorage.getItem("theme");
-// if (theme !== null && Object.values(THEMES).includes(theme)) {
-// 	defaultSettingValue.theme = THEMES[theme];
-// } else {
-// 	localStorage.setItem("theme", defaultSettingValue.theme);
-// }
+if (theme) {
+	preloadedState.theme = theme;
+}
+if (buttons) {
+	preloadedState.buttonType = BUTTON_TYPE[buttons];
+}
+if (language) {
+	preloadedState.language = LANGS[language];
+}
 
-// const buttons = localStorage.getItem("buttons");
-// if (buttons !== null && Object.values(BUTTON_TYPE).includes(buttons)) {
-// 	defaultSettingValue.buttonType = BUTTON_TYPE[buttons];
-// } else {
-// 	localStorage.setItem("buttons", defaultSettingValue.buttonType);
-// }
+console.log(preloadedState)
 
-// const language = localStorage.getItem("lang");
-// if (language !== null && Object.values(LANGS).includes(language)) {
-// 	defaultSettingValue.language = LANGS[language];
-// } else {
-// 	localStorage.setItem("lang", defaultSettingValue.language);
-// }
+const store = configureStore({
+    reducer: appReducer,
+    preloadedState: preloadedState,
+});
+
+export default store;
+
+const [HTMLElement] = document.getElementsByTagName("html");
+HTMLElement.dataset.theme = preloadedState.theme;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RootView defaultSettingValue={defaultSettingValue} />);
+root.render(
+	<Provider store={store}>
+		<React.Fragment>
+				<RouterProvider router={ROUTES} />
+		</React.Fragment>
+	</Provider>
+);

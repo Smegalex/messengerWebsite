@@ -2,7 +2,7 @@
 import "../../styles/components/MainLayout.css";
 
 import { Header } from "../header/Header";
-import { OverlaySettings } from "../overlaySettings/overlaySettings";
+import { OverlaySettings } from "../OverlaySettings/OverlaySettings";
 import {useState } from "react";
 
 export const MainLayout = ({ currentPage, children }) => {
