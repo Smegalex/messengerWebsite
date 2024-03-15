@@ -32,8 +32,8 @@ const store = configureStore({
 
 export default store;
 
-const [HTMLElement] = document.getElementsByTagName("html");
-HTMLElement.dataset.theme = preloadedState.theme;
+// const [HTMLElement] = document.getElementsByTagName("html");
+// HTMLElement.dataset.theme = preloadedState.theme;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

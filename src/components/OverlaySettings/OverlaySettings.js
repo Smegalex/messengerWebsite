@@ -1,31 +1,31 @@
 import "../../styles/components/overlaySettings.css";
 import { THEMES, BUTTON_TYPE } from "../../context/SettingContext";
-import SettingContext from "../../context/SettingContext";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const handleChange = (prevSettings, event, renew) => {
+const handleChange = (prevSettings, event, dispatch) => {
 	let changedValue = event.target._wrapperState.initialValue;
 	if (Object.values(THEMES).includes(changedValue)) {
 		console.log("theme changed");
-		prevSettings["theme"] = changedValue;
+		// prevSettings["theme"] = changedValue;
 		localStorage.setItem("theme", changedValue);
-		console.log(prevSettings);
-		renew();
+		// console.log(prevSettings);
+		dispatch({type: "theme/themeChange", payload: changedValue});
 	} else if (
 		Object.values(BUTTON_TYPE).includes(changedValue.toUpperCase())
 	) {
 		changedValue = changedValue.toUpperCase();
-		console.log("button-type changed");
+		// console.log("button-type changed");
 		prevSettings["buttonType"] = changedValue;
 		localStorage.setItem("buttons", changedValue);
-		console.log(prevSettings);
-		renew();
+		// console.log(prevSettings);
+		dispatch({type: "buttonType/buttonTypeChange", payload: changedValue});
 	}
 	return prevSettings;
 };
@@ -33,6 +33,7 @@ const handleChange = (prevSettings, event, renew) => {
 export const OverlaySettings = (overlayActive) => {
 	const settings = useSelector((store) => store);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	console.log(settings)
 
 	// const updateSettings = (newSettings) => {setSettings(newSettings)};
@@ -49,7 +50,7 @@ export const OverlaySettings = (overlayActive) => {
 			<form
 				key="themes"
 				onChange={(event) =>
-					handleChange(settings, event, () => navigate(0))
+					handleChange(settings, event, (action) => dispatch(action))
 				}
 			>
 				{Object.values(THEMES).map((theme) => (

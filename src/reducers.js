@@ -25,6 +25,8 @@ export default function appReducer(state = initialState, action) {
 	switch (action.type) {
 		// Do something here based on the different types of actions
 		case "theme/themeChange":
+			const [HTMLElement] = document.getElementsByTagName("html");
+			HTMLElement.dataset.theme = THEMES[action.payload];
 			return {
 				...state,
 				theme: THEMES[action.payload],
